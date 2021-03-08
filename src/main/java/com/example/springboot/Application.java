@@ -5,70 +5,41 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.example.springboot.config.ConfigProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 public class Application {
 
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
-    @Value("${spring.datasource.username}")
-    static private String username;
-
-    @Value("${spring.datasource.password}")
-    static private String password;
-
-    @Value("${spring.datasource.url}")
-    static private String url;
-
-    @Value("${env}")
-    static private String env;
-
-    @Value("${env}")
-    static private String evn;
+    @Autowired
+    private ConfigProperties configProperties;
 
     @Value("#{systemProperties}")
     static private Map<String, String> systemPropertiesMap;
 
-    @Autowired
-    static private Environment environment;
-
-
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);
 
-        logger.debug("the passed in password is : ********  *********  " + password);
+        //printEnvironmentVariable();
 
-        logger.debug("the passed in user name is : ********  *********  " + username);
-
-        logger.debug("the passed in url is : ********  *********  " + url);
-
-        logger.debug("the passed in env is : ********  *********  " + env);
-
-        printEnvironmentVariable();
-
-        //todo figure this out.
-
-        // System.out.println("************************print system property***************************");
-
-        // printSystemProperty();
-
-        //todo figure this environment out.
-        //environment.getProperty(" +****************************** jdbc.url");
     }
 
-    static private void printSystemProperty() {
+    static private void printConfigurationProperty() {
         systemPropertiesMap.forEach((k, v) -> System.out.println(k + ":" + v));
     }
 

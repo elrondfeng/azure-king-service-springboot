@@ -1,15 +1,11 @@
 package com.example.springboot.dao;
 
 import com.example.springboot.domain.Customer;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
-@Mapper
 @Repository
-public interface CustomerMapper {
-
-    List<Customer> findAll();
+public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
 }
