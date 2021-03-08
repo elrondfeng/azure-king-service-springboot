@@ -25,16 +25,17 @@
     </typeAliases>
 
 
-    <environments default="development">
+<!--    <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC">
             </transactionManager>
             <dataSource type="POOLED">
                 <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
                 <property name="url" value="jdbc:sqlserver://dermssqlserver.database.windows.net:1433;database=dermsdb;user=dermsadmin@dermssqlserver;password=derms@eda9;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"/>
-            </dataSource>
+            </dataSource>&ndash;&gt;
         </environment>
-    </environments>
+    </environments>-->cd ..
+    
 
 
     <!--<mappers>

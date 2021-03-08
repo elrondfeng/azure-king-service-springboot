@@ -19,23 +19,10 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 public class Application {
 
-
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
-
-    @Value("${spring.datasource.username}")
-    static private String username;
-
-    @Value("${spring.datasource.password}")
-    static private String password;
-
-    @Value("${spring.datasource.url}")
-    static private String url;
 
     @Value("${env}")
     static private String env;
-
-    @Value("${env}")
-    static private String evn;
 
     @Value("#{systemProperties}")
     static private Map<String, String> systemPropertiesMap;
@@ -47,12 +34,6 @@ public class Application {
     public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);
-
-        logger.debug("the passed in password is : ********  *********  " + password);
-
-        logger.debug("the passed in user name is : ********  *********  " + username);
-
-        logger.debug("the passed in url is : ********  *********  " + url);
 
         logger.debug("the passed in env is : ********  *********  " + env);
 
